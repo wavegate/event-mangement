@@ -26,9 +26,10 @@ public class UserController {
         return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public AppUser createUser(@RequestBody AppUser user) {
-        return userService.save(user);
+    @PostMapping("/register")
+    public ResponseEntity<AppUser> registerUser(@RequestBody AppUser user) {
+        AppUser registeredUser = userService.registerUser(user);
+        return ResponseEntity.ok(registeredUser);
     }
 
     @PutMapping("/{id}")
