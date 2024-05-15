@@ -1,5 +1,8 @@
 package com.example.eventmanagement.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -12,7 +15,14 @@ public class AppUser {
     private String password;
     private String email;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Event> events = new HashSet<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Registration> registrations = new HashSet<>();
+
     // Getters and Setters
+
     public Long getId() {
         return id;
     }
@@ -43,6 +53,22 @@ public class AppUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
+
+    public Set<Registration> getRegistrations() {
+        return registrations;
+    }
+
+    public void setRegistrations(Set<Registration> registrations) {
+        this.registrations = registrations;
     }
 
 }
