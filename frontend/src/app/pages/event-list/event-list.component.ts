@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './event-list.component.html',
-  styleUrl: './event-list.component.scss'
+  styleUrl: './event-list.component.scss',
 })
-export class EventListComponent {
-
-}
+export class EventListComponent {}
